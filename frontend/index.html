@@ -1,0 +1,358 @@
+<html><head>
+    <title>KUT - Karazin Univercity Timetable</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/jaavscript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.js"></script>
+
+    <link href="css/1x.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/cs-select.css">
+    
+    <link rel="stylesheet" type="text/css" href="css/cs-skin-boxes.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/timeframe.css">
+    <link rel="stylesheet" type="text/css" href="css/newselect.css">
+    <script src="js/myangular.js"></script>
+
+    
+  </head>
+  <body ng-app="KarazinApp" >  
+    <header>
+      <div class="container" id="title">
+        <h1>
+          <img src="images/logo.gif">Karazin University Timetable</h1>
+      </div>
+    </header>
+    <div class="section">
+      <div id="row">
+        <div id="leftColumn" class="col-md-4 text-center" style="padding-top: 0px;">
+          <ul class="nav nav-pills">
+                <li class="active">
+                  <a data-toggle="tab" href="#students">Студенти</a>
+                </li>
+                <li>
+                  <a data-toggle="tab" href="#teachers">Викладачі</a>
+                </li>                
+          </ul>
+          <div class="tab-content">
+      
+            <div class="tab-pane fade in active" id="students">
+      
+              <p></p>
+              <p></p>
+              
+              <section id="facSection">
+                <select class="cs-select cs-skin-boxes" ng-change="update()">
+                  <option value="" disabled="" selected="">Оберіть факультет</option>
+                  <option value="біологічний" data-class="f1">біологічний</option>
+                  <option value="геологічний" data-class="f2">геологічний</option>
+                  <option value="екологічний" data-class="f3">екологічний</option>
+                  <option value="економічний" data-class="f4">економічний</option>
+                  <option value="іноземних мов" data-class="f5">іноземних мов</option>
+                  <option value="історичний" data-class="f6">історичний</option>
+                  <option value="комп'ютерних наук" data-class="f7">комп'ютерних наук</option>
+                  <option value="медичний" data-class="f8">медичний</option>
+                  <option value="механіко-математичний" data-class="f9">механіко-математичний</option>
+                  <option value="міжнародних відносин" data-class="f10">міжнародних відносин</option>
+                  <option value="психології" data-class="f11">психології</option>
+                  <option value="радіофізики" data-class="f12">радіофізики</option>
+                  <option value="соціологічний" data-class="f13">соціологічний</option>
+                  <option value="фізико-енергетичний" data-class="f14">фізико-енергетичний</option>
+                  <option value="фізико-технічний" data-class="f15">фізико-технічний</option>
+                  <option value="фізичний" data-class="f16">фізичний</option>
+                  <option value="філологічний" data-class="f17">філологічний</option>
+                  <option value="філософський" data-class="f18">філософський</option>
+                  <option value="хімічний" data-class="f19">хімічний</option>
+                  <option value="юридичний" data-class="f20">юридичний</option>
+                </select>
+              </section>
+
+
+<section id="courseSection" ng-controller="CourseListCtrl">
+    <select>
+    <option value="" disabled="" selected=""> курс</option>
+    <option ng-repeat="course in courses"
+            value="{{course.value}}">
+      {{course.name}}
+
+    </option>
+    </select>
+</section>
+                         
+            <section ng-controller="GroupListCtrl">
+                <select class="newselect vcenter">
+                  <option value="" disabled="" selected="">група</option>
+                   <option ng-repeat="group in groups"
+            value="{{group.value}}">
+      {{group.name}}
+
+    </option>
+                </select>
+      </section>
+              <br>
+              <div id="example" class="vcenter">
+                <h5>намалюйте потрібний період в календарі
+                  <i class="fa fa-chevron-down fa-fw fa-lg"></i>
+                </h5>
+                <div id="calendars"></div>
+                <div id="calendar_form">
+                  <div id="labels">
+                    <h5>або введіть тут (
+                      <a href="#" onclick="return false;" id="reset">скинути <i class="fa fa-fw fa-lg fa-close"></i></a>)</h5>
+                  </div>
+                  <div id="fields">
+                    <span>
+                      <input type="text" name="start" value="" id="start">–
+                      <input type="text" name="end" value="" id="end">
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <script type="text/javascript" charset="utf-8" src="js/prototype.js"></script>
+              <script type="text/javascript" charset="utf-8" src="js/timeframe.js"></script>
+              <script type="text/javascript" charset="utf-8">
+                //<![CDATA[
+               new Timeframe('calendars', {
+               startField: 'start',
+               endField: 'end',
+               weekOffset: 1,
+              resetButton: 'reset' });
+                                                                      //]]>
+              </script>
+              <br>
+            </div>
+            <div id="teachers" class="tab-pane fade">
+              <h3>Menu 2</h3>
+              <p>Some content in menu 2.</p>
+            </div>
+          </div>
+        </div>
+      
+      <div class="col-xs-12 col-sm-6 col-md-8 text-left">
+        <div id="fullcarousel-example" data-interval="false" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="item" id="previous">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Пн</th>
+                    <th>Вт</th>
+                    <th>Ср</th>
+                    <th>Чт</th>
+                    <th>Пт</th>
+                    <th>Сб</th>
+                    <th>Нд</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="item active" id="current">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Пн</th>
+                    <th>Вт</th>
+                    <th>Ср</th>
+                    <th>Чт</th>
+                    <th>Пт</th>
+                    <th>Сб</th>
+                    <th>Нд</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="item" id="next">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Пн</th>
+                    <th>Вт</th>
+                    <th>Ср</th>
+                    <th>Чт</th>
+                    <th>Пт</th>
+                    <th>Сб</th>
+                    <th>Нд</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+          <a class="left carousel-control" href="#fullcarousel-example" data-slide="prev"><i class="icon-prev fa fa-angle-left"></i></a>
+          <a class="right carousel-control" href="#fullcarousel-example" data-slide="next"><i class="fa fa-angle-right fa-lg icon-next"></i></a>
+        </div>
+        <p></p>
+        <p></p>
+      </div>
+    </div>
+    <script src="js/classie.js"></script>
+    <script src="js/selectFx.js"></script>
+    <script>
+      (function() {
+                                                                                          [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {  
+                                                                                            new SelectFx(el);
+                                                                                          } );
+                                                                                        })();
+    </script>
+  
+
+</body></html>
