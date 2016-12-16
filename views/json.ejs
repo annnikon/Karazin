@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html  ng-app='karazinApp'>
+<head>
+	<title></title>
+	<script src="js/angular.js"></script>
+</head>
+<body>
+<div  ng-controller="GroupCtrl">
+{{g}}
+<input type="text" id='dep' ng-model='dep'>
+<input type='button' value='SHOW' id="button" ng-click='gT()'>
+</div>
+</body>
+<script>
+	var karazinApp = angular.module('karazinApp',[]);
+		karazinApp.controller('GroupCtrl', function ($scope,$http) { 
+		$scope.gT = function(){
+    	$http.get('/groups/'+dep.value).success(function(data){
+    	$scope.g = data;
+    	}).error(function(){
+    	alert('хер там')
+    	})
+    	}
+	});
+</script>
+</html>

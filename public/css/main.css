@@ -1,0 +1,62 @@
+
+
+body::after{height:0px; }
+body{background:  #919191;}
+.nav-tabs {font-size:1.4em;color:white;}
+ div .col-md-4, .col-md-8{
+
+
+ /*  background:red; */
+
+     margin-right: auto;
+    margin-left: auto;
+	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    
+ }
+.form-control{
+width:60%;
+}
+table td {max-width:100px;}
+header {background:#264475;
+  font-size:1.6 em;
+width:100%; z-index:1000;
+  height:125px;
+  color:white;  
+  box-shadow: 0 0 10px rgba(38,68,117,0.5);}
+                               
+table{background: rgba(255,255,255,0.5);
+border-color:white;}
+
+#ctable{padding:5px;width:80%;
+ margin-left: 10%;
+ color:white;
+ margin-bottom:10px;
+}
+
+row{margin-left:0;}
+.vcenter {
+display: inline-block;
+  float: none;
+  vertical-align: middle;}
+
+
+
+table td{heigth:40px;}
+#fullcarousel-example {height: 550px; width:100%;}
+.table-bordered{height: 550px;}
+#calendars button {font-size:0.9em;}
+#calendar label {width: 30px; }
+
+#selectGroup {font-weight: 700; font-size: 0.9em; background: #fff;
+
+  box-shadow: 0 0 5px rgba(38,68,117,0.5); width:56%;}
+.ng-scope td:hover {background: rgba(255,176,59,0.5)}
+a:hover{text-decoration: none;}
+a:visited{text-decoration: none;}
+
+@media screen and (max-width: 615px) {
+header h1 { font-size: 1.4em !important;}
+.table-bordered {width: 90%;}
+
+}
